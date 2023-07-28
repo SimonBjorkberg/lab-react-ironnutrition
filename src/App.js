@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 function App() {
   const [ foodData, setFoodData ] = useState(data)
-  const [ foods, setFoods ] = useState(foodData)
+  const [ foods, setFoods ] = useState(data)
 
   function addFood(newFood) {
     setFoods([...foods, newFood])
@@ -27,6 +27,7 @@ function App() {
       return food.name !== foodName
     })
     setFoods(deleted)
+    setFoodData(deleted)
   }
 
   return (
