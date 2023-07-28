@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Card, Col, Button } from 'antd';
+import { Card, Col } from 'antd';
 
 const FoodBox = (props) => {
   const { foods, deleteFood } = props;

@@ -1,20 +1,21 @@
 import './App.css';
 import AddFoodForm from './components/AddFoodForm';
 import FoodBox from './components/FoodBox';
-import Searchbar from './components/SearchBar';
-import originalFoods from './foods.json';
+import SearchBar from './components/SearchBar';
+import data from './foods.json';
 import { useState } from 'react'
 
 function App() {
-
-  const [ foods, setFoods ] = useState(originalFoods)
+  const foodData = data
+  const [ foods, setFoods ] = useState(foodData)
 
   function addFood(newFood) {
     setFoods([...foods, newFood])
+    foodData.push(newFood)
   }
 
   function search(e) {
-    const filtered = originalFoods.filter((food) => {
+    const filtered = foodData.filter((food) => {
       return food.name.toLowerCase().includes(e.target.value.toLowerCase())
     })
     setFoods(filtered)
@@ -31,7 +32,7 @@ function App() {
   return (
     <div className="foods ">
       <AddFoodForm addFood={addFood} />
-      <Searchbar search={search} />
+      <SearchBar search={search} />
       <FoodBox foods={foods} deleteFood={deleteFood} />
     </div>
   );
