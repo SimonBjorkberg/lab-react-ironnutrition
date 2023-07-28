@@ -6,12 +6,12 @@ import data from './foods.json';
 import { useState } from 'react'
 
 function App() {
-  const foodData = data
+  const [ foodData, setFoodData ] = useState(data)
   const [ foods, setFoods ] = useState(foodData)
 
   function addFood(newFood) {
     setFoods([...foods, newFood])
-    foodData.push(newFood)
+    setFoodData([...foods, newFood])
   }
 
   function search(e) {
@@ -23,7 +23,7 @@ function App() {
 
   function deleteFood(foodName) {
     console.log(foodName)
-    const deleted = foods.filter((food) => {
+    const deleted = foodData.filter((food) => {
       return food.name !== foodName
     })
     setFoods(deleted)
